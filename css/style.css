@@ -67,6 +67,31 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important; }
 
+.gallery-section-categories{
+    display: flex;
+    min-width: 450px;
+    min-height:  300px;
+    background-color: aqua;
+    border-radius: 4px;
+    margin: 30px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition-timing-function: ease;
+}
+
+.gallery-section-categories:hover{
+    transform: scale(1.1);
+    opacity: .9;
+    
+}
+
+.gallery-section-categories h2{
+    margin: auto;
+    color: white;
+}
+
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
