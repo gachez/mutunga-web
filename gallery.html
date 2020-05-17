@@ -62,30 +62,59 @@
   <div class="site-section">
     <div class="container">
       <div class="row no-gutters">
-          <div class="gallery-section-categories" style="background-image: url(images/gender-based-violence-rally/gender-based-violence-2.jpeg)">
+         <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides()">
+            <div class="gallery-section-categories" style="background-image: url(images/gender-based-violence-rally/gender-based-violence-2.jpeg)">
              <h2>16 days of activism</h2>
-               
           </div>
+          </a>
           
-       
-          
-          <div class="gallery-section-categories" style="background-image: url(images/agricultural-activities.jpg)">
+        <a type="button" data-toggle="modal" data-target="#exampleModal">
+          <div class="gallery-section-categories" style="background-image: url(images/agricultural-activities.jpg)" data-toggle="modal" data-target="#exampleModal">
               <h2>Irrigation</h2>
           </div>
+          </a>
           
+         <a type="button" data-toggle="modal" data-target="#exampleModal">  
           <div class="gallery-section-categories" style="background-image: url(images/uploads/8436c9ecb64f0032b7cfaad3b74c3cf1.jpg)">
               <h2>Water</h2>
-          </div>
+             </div></a>
           
+         <a type="button" data-toggle="modal" data-target="#exampleModal">  
           <div class="gallery-section-categories" style="background-image: url(images/uploads/352f641eabb99630cf500ece761874c4.jpg)">
               <h2>Education</h2>
-          </div>
+             </div></a>
  
       </div>
     </div>
   </div>
 
+ 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%">
+
+   <section class="gallery-section">
+        <h1 class="gallery-title">Gallery</h1>
+        <div class="gallery-slider">
+            <img class ="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
+            <img class="slide animated forwards slideInRight delay-250ms "src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
+            <img class="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
+        
+        
+        </div>
+
+        <div class="gallery-navigation">
+            <span class="left-nav" onclick="plusSlides(-1)"><img src="leftarrow.png" width="100px" height="100px" alt="left" style="object-fit: cover; margin-right: 3rem;cursor: pointer;"/></span>
+            <span class="right-nav" onclick="plusSlides(1)"><img src="right-arrow.png" width="100px" height="100px" alt="right" style="object-fit: cover;cursor: pointer;"/></span>
+        </div>    
+    </section>
+</div>
+
+
+      
+<!--  image slider for page-->
+     
+      
    <footer id="footer" class="footer">
     <div class="container">
       <div class="row mb-5">
@@ -120,6 +149,63 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
+    <script>
+        localStorage.clear();
+        
+        localStorage.setItem("category", "activism");
+        
+        const chooseSlides = () => {
+          console.log("works")
+        switch (localStorage.getItem("category")) {
+            case 'activism':
+                document.getElementsByClassName('slide')[0].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally.jpeg")
+                document.getElementsByClassName('slide')[1].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally-2.jpeg")
+                document.getElementsByClassName('slide')[2].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally-3.jpeg")
+                break;
+                
+            default:
+                console.log("default")
+        }  
+        } 
+        
+        let slider = document.getElementsByClassName('gallery-slider')[0]   
+        let leftNav = document.getElementsByClassName('left-nav')[0]
+        let rightNav = document.getElementsByClassName('right-nav')[0]
+
+        // rightNav.addEventListener('click', ()=>{
+
+            
+        //     document.getElementsByClassName('first')[0].style.display="none"
+        //    slides[index].style.display = "block"
+
+        //    console.log(slides[index] + ' : ' + index)
+           
+        // })
+                
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slides[slideIndex-1].style.display = "block";  
+        }
+        
+    
+    </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
