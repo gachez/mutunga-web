@@ -34,9 +34,9 @@
             <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item active"><a href="about.html" class="nav-link">About</a></li>
                         <li class="nav-item active"><a href="services.html" class="nav-link">Services</a></li>
-            <li class="nav-item active"><a href="index.html" class="nav-link">Gallery</a></li>
+            <li class="nav-item active"><a href="projects.html" class="nav-link">Projects</a></li>
           <li class="nav-item"><a href="donate.html" class="nav-link">Email: info@mutungafoundation.org</a></li>
-          <li class="nav-item"><a href="gallery.html" class="nav-link" style="font-size: 24px; font-weight: 700">Donate Today</a></li>
+          <li class="nav-item"><a href="#footer" class="nav-link" style="font-size: 24px; font-weight: 700">Donate Today</a></li>
         </ul>
       </div>
 
@@ -50,7 +50,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-md-7 text-center">
-              <h2 class="heading">Gallery</h2>
+              <h2 class="heading">Projects</h2>
             </div>
           </div>
         </div>
@@ -62,24 +62,24 @@
   <div class="site-section">
     <div class="container">
       <div class="row no-gutters">
-         <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides()">
+         <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides('activism')">
             <div class="gallery-section-categories" style="background-image: url(images/gender-based-violence-rally/gender-based-violence-2.jpeg)">
              <h2>16 days of activism</h2>
           </div>
           </a>
           
-        <a type="button" data-toggle="modal" data-target="#exampleModal">
+        <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides('irrigation')">
           <div class="gallery-section-categories" style="background-image: url(images/agricultural-activities.jpg)" data-toggle="modal" data-target="#exampleModal">
               <h2>Irrigation</h2>
           </div>
           </a>
           
-         <a type="button" data-toggle="modal" data-target="#exampleModal">  
+         <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides('water')">  
           <div class="gallery-section-categories" style="background-image: url(images/uploads/8436c9ecb64f0032b7cfaad3b74c3cf1.jpg)">
               <h2>Water</h2>
              </div></a>
           
-         <a type="button" data-toggle="modal" data-target="#exampleModal">  
+         <a type="button" data-toggle="modal" data-target="#exampleModal" onclick="chooseSlides('education')">  
           <div class="gallery-section-categories" style="background-image: url(images/uploads/352f641eabb99630cf500ece761874c4.jpg)">
               <h2>Education</h2>
              </div></a>
@@ -91,23 +91,26 @@
  
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" data-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-   <section class="gallery-section">
-        <h1 class="gallery-title">Gallery</h1>
-        <div class="gallery-slider">
-            <img class ="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
-            <img class="slide animated forwards slideInRight delay-250ms "src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
-            <img class="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
-        
-        
-        </div>
+    <div class="modal-dialog">
+    
+       <section class="gallery-section modal-content">
+            <h1 class="gallery-title">Gallery</h1>
+            <div class="gallery-slider">
+                <img class ="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
+                <img class="slide animated forwards slideInRight delay-250ms "src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
+                <img class="slide animated forwards slideInRight delay-250ms" src="" width="100%" height="100%" alt="slider" style="object-fit: cover; "/>
 
-        <div class="gallery-navigation">
-            <span class="left-nav" onclick="plusSlides(-1)"><img src="leftarrow.png" width="100px" height="100px" alt="left" style="object-fit: cover; margin-right: 3rem;cursor: pointer;"/></span>
-            <span class="right-nav" onclick="plusSlides(1)"><img src="right-arrow.png" width="100px" height="100px" alt="right" style="object-fit: cover;cursor: pointer;"/></span>
-        </div>    
-    </section>
+
+            </div>
+
+            <div class="gallery-navigation modal-footer">
+                <span class="left-nav " onclick="plusSlides(-1)"><img src="images/left-arrow.png" width="50px" height="50px" alt="left" style="object-fit: cover; margin-right: 3rem;cursor: pointer;"/></span>
+                <span class="right-nav" onclick="plusSlides(1)"><img src="images/right-arrow.png" width="50px" height="50px" alt="right" style="object-fit: cover;cursor: pointer;"/></span>
+            </div>    
+        </section>
+    </div>
 </div>
 
 
@@ -122,6 +125,9 @@
           <h3 class="heading-section" style="font-size: 30px;">Make a donation to support our cause</h3>
           <p class="mb-5"></p>
         </div>
+        <div class="col-md-6 col-lg-4">
+          <img src="images/donate-mutunga-paybill.jpg" width="350px" height="280px" />
+        </div>          
         <div class="col-md-6 col-lg-4">
           <div class="block-23">
             <h3 class="heading-section">Contact Info</h3>
@@ -151,22 +157,39 @@
 
     <script>
         localStorage.clear();
-        
-        localStorage.setItem("category", "activism");
-        
-        const chooseSlides = () => {
-          console.log("works")
-        switch (localStorage.getItem("category")) {
+        const chooseSlides = (option) => {
+          console.log("works");
+        switch (option) {
             case 'activism':
                 document.getElementsByClassName('slide')[0].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally.jpeg")
-                document.getElementsByClassName('slide')[1].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally-2.jpeg")
-                document.getElementsByClassName('slide')[2].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-rally-3.jpeg")
+                document.getElementsByClassName('slide')[1].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-2.jpeg")
+                document.getElementsByClassName('slide')[2].setAttribute('src', "images/gender-based-violence-rally/gender-based-violence-3.jpeg")
                 break;
+                
+            case 'irrigation':
+                document.getElementsByClassName('slide')[0].setAttribute('src', "images/agricultural-activities.jpg")
+                document.getElementsByClassName('slide')[1].setAttribute('src', "images/food-security.jpg")
+                document.getElementsByClassName('slide')[2].setAttribute('src', "images/uploads/5cbbdf800287b67cd029f5109c5e52a2.png")
+                break;                
+                
+            case 'water':
+                document.getElementsByClassName('slide')[0].setAttribute('src', "images/well-construction.jpg")
+                document.getElementsByClassName('slide')[1].setAttribute('src', "images/uploads/5b6ef6c4eab38c1ae06c46acce02ed36.jpg")
+                document.getElementsByClassName('slide')[2].setAttribute('src', "images/uploads/753e377b0e7ae2911cdbf594599315b7.jpg")
+                break;
+                
+            case 'education':
+                document.getElementsByClassName('slide')[0].setAttribute('src', "images/uploads/352f641eabb99630cf500ece761874c4.jpg")
+                document.getElementsByClassName('slide')[1].setAttribute('src', "images/uploads/1000xauto-1592f0be938831f35c9a459facfe4f22.jpg")
+                document.getElementsByClassName('slide')[2].setAttribute('src', "images/uploads/1000xauto-f53095fa493f9454d6b61901087ffd55.jpg")
+                break;                
                 
             default:
                 console.log("default")
-        }  
-        } 
+          }  
+        }
+        
+      
         
         let slider = document.getElementsByClassName('gallery-slider')[0]   
         let leftNav = document.getElementsByClassName('left-nav')[0]
